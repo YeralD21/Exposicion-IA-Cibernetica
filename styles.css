@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                url('bosqueazul.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px 50px;
+    text-align: center;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.main-card {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    cursor: pointer;
+}
+
+.main-card h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+/* Contenedor de flechas */
+.arrows-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    height: 40px;
+}
+
+/* Estilos para las flechas */
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid rgba(59, 130, 246, 0.8);
+    position: relative;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.arrow-left {
+    margin-left: 20%;
+}
+
+.arrow-right {
+    margin-right: 20%;
+}
+
+/* Líneas de conexión */
+.arrow::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -2px;
+    width: 4px;
+    height: 30px;
+    background: rgba(59, 130, 246, 0.8);
+    border-radius: 2px;
+}
+
+.secondary-cards {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+}
+
+.secondary-card {
+    flex: 1;
+    max-width: 300px;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.secondary-card h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+/* Efectos de hover con brillo */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.main-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.secondary-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .main-card {
+        max-width: 100%;
+        padding: 25px 30px;
+    }
+    
+    .main-card h1 {
+        font-size: 2rem;
+    }
+    
+    .secondary-card {
+        max-width: 100%;
+        padding: 20px 25px;
+    }
+    
+    .secondary-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .secondary-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .arrows-container {
+        height: 30px;
+        max-width: 100%;
+    }
+    
+    .arrow {
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 25px solid rgba(59, 130, 246, 0.8);
+    }
+    
+    .arrow::before {
+        top: -25px;
+        height: 25px;
+    }
+    
+    .arrow-left {
+        margin-left: 10%;
+    }
+    
+    .arrow-right {
+        margin-right: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-card h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .secondary-card h2 {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .arrows-container {
+        height: 25px;
+    }
+    
+    .arrow {
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid rgba(59, 130, 246, 0.8);
+    }
+    
+    .arrow::before {
+        top: -20px;
+        height: 20px;
+    }
+    
+    .arrow-left {
+        margin-left: 5%;
+    }
+    
+    .arrow-right {
+        margin-right: 5%;
+    }
+}
