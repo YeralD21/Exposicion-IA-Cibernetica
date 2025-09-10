@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoría de la Información - Prótesis Robóticas con Aprendizaje por Refuerzo</title>
+    <link rel="stylesheet" href="teoria-sistemas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Teoría de la Información</h1>
+            <div class="thesis-title-container">
+                <h2 class="thesis-label">TESIS</h2>
+                <h3 class="thesis-title">Using Reinforcement Learning to Better Train Brain-Computer Interface-enabled Robotic Prosthetics</h3>
+            </div>
+            <h4>Autora: Kimaya H. M. Lecamwasam | Wellesley College, 2021</h4>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="column">
+                <section class="section">
+                    <h2>Título y Resumen</h2>
+                    <h3>Título</h3>
+                    <p><strong>Using Reinforcement Learning to Better Train Brain-Computer Interface-enabled Robotic Prosthetics</strong></p>
+                    
+                    <h3>Resumen</h3>
+                    <p>La tesis propone un enfoque de <strong>IA simbiótica invasiva</strong> para controlar prótesis robóticas mediante BCI intracorticales. Identifica que los decodificadores estáticos habituales pierden rendimiento por la deriva y reorganización de la actividad neural.</p>
+                    
+                    <p>Como solución, diseña e implementa (en simulación) un <strong>agente de aprendizaje por refuerzo (Actor-Critic)</strong> que aprende y se re-entrena continuamente usando señales representativas del córtex motor. El sistema se valida en entornos simulados que modelan la prótesis y la señal neural con distintos niveles de ruido y perturbación.</p>
+                    
+                    <p>Los resultados muestran que el agente RL mantiene alta precisión y capacidad de recuperación frente a variaciones que degradan severamente a un clasificador estático. La tesis se presenta como <strong>prueba de concepto técnica</strong>, con clara ruta de trabajo para experimentación in vivo y escalado clínico.</p>
+                    
+                    <div class="keywords-container">
+                        <h4>Términos Clave Identificados:</h4>
+                        <ul>
+                            <li><strong>Modelado:</strong> Sí (uso de modelo/simulador del córtex motor)</li>
+                            <li><strong>Simulación:</strong> Sí (experimentos sobre señales simuladas)</li>
+                            <li><strong>Optimización:</strong> Sí (el RL optimiza la política de control)</li>
+                            <li><strong>Sistemas blandos:</strong> No</li>
+                            <li><strong>Pensamiento sistémico:</strong> No</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Planteamiento del Problema y Objetivos</h2>
+                    <h3>Formulación del Problema</h3>
+                    <ul>
+                        <li><strong>Problema técnico y aplicado:</strong> pérdida de rendimiento en decodificadores BCI por variabilidad biológica (drift, pérdida de unidades, ruido)</li>
+                        <li><strong>Ámbito:</strong> comunicación y control adaptativo entre dos subsistemas (cerebro humano / interfaz computacional + prótesis)</li>
+                        <li><strong>Naturaleza:</strong> sistema complejo socio-técnico en el sentido técnico-operativo (variabilidad temporal y necesidad de co-adaptación)</li>
+                    </ul>
+                    
+                    <h3>Objetivos</h3>
+                    <ol>
+                        <li>Diseñar un agente RL (Actor-Critic) apto para aprender políticas de control que traduzcan estados neurales a comandos de prótesis</li>
+                        <li>Implementar el sistema en simulación con un modelo del córtex motor y un entorno de prótesis</li>
+                        <li>Evaluar robustez y capacidad de re-aprendizaje ante ruido y reorganización neuronal, comparando con un clasificador estático (baseline)</li>
+                        <li>Documentar métricas y protocolo de pruebas para permitir replicación</li>
+                    </ol>
+                    
+                    <p><strong>Clasificación metodológica:</strong> ingenieril — optimización y control adaptativo (vinculado con principios cibernéticos: bucle de retroalimentación percepción→acción→recompensa)</p>
+                </section>
+
+                <section class="section">
+                    <h2>Marco Teórico</h2>
+                    <h3>1. BCI invasivas y motivación clínica</h3>
+                    <p>Las interfaces intracorticales registran actividad de M1 con alta resolución para recuperar control motor en pacientes con parálisis. <strong>Limitación conocida:</strong> los decodificadores clásicos, basados en mapeos fijos, sufren degradación cuando cambia la señal neural o cambian condiciones fisiológicas.</p>
+                    
+                    <h3>2. Teoría del aprendizaje por refuerzo aplicada a BCI</h3>
+                    <p>RL optimiza una política que maximiza una recompensa esperada; <strong>Actor-Critic</strong> separa la selección de acciones (Actor) y la evaluación (Critic), lo que facilita aprendizaje estable en entornos no estacionarios.</p>
+                    <p>Importancia del uso de una señal de recompensa apropiada: puede ser externa (éxito motor) o, en modelos avanzados, derivada de señales neurales de "valor".</p>
+                    
+                    <h3>3. Concepto de simbiosis cerebro–máquina</h3>
+                    <p><strong>Co-adaptación:</strong> el usuario y la máquina deben adaptarse mutuamente; la máquina ajusta su mapeo y el cerebro aprende a modular su actividad.</p>
+                    <p><strong>Bucle percepción-acción-recompensa (PARC)</strong> como principio operativo: acción generada → resultado observado → señal de recompensa usada para ajustar política.</p>
+                    
+                    <h3>4. Estudios y fundamentos previos</h3>
+                    <p>Referencias a trabajos que usan RL en BMIs y experimentos animales donde señales de recompensa cerebral (NAcc) guían entrenamiento.</p>
+                    <p><strong>Disciplina aplicada:</strong> neurociencia, ingeniería biomédica/neuroingeniería y ciencias de la computación (IA/ML). Es interdisciplinaria.</p>
+                </section>
+            </div>
+
+            <div class="column">
+                <section class="section">
+                    <h2>Metodología</h2>
+                    <h3>Herramientas y componentes</h3>
+                    <ul>
+                        <li><strong>Algoritmo:</strong> Actor-Critic (implementable en PyTorch/TensorFlow o MATLAB RL toolbox)</li>
+                        <li><strong>Entorno de simulación:</strong> modelo cinemático simple de prótesis (mano/brazo) con objetivos posicionales</li>
+                        <li><strong>Modelo neural sintético:</strong> simulador de firing rates/neuronas de M1; incluye parámetros para variabilidad y ruido</li>
+                        <li><strong>Métricas:</strong> tasa de éxito, tiempo al objetivo, curva de aprendizaje, recuperación tras perturbación</li>
+                        <li><strong>Análisis estadístico:</strong> medias, desviaciones, comparación con baseline</li>
+                    </ul>
+                    
+                    <h3>Protocolo paso a paso</h3>
+                    <ol>
+                        <li>Definir entorno de control: especificar espacio de estados, acciones y dinámica de la prótesis</li>
+                        <li>Generar señales simuladas: construir tuning curves para neuronas simuladas y añadir ruido gaussiano</li>
+                        <li>Implementar Actor-Critic con parámetros específicos</li>
+                        <li>Entrenamiento inicial hasta convergencia bajo condiciones nominales</li>
+                        <li>Perturbaciones controladas: introducir ruido adicional y observar recuperación</li>
+                        <li>Comparación con baseline: entrenar clasificador estático</li>
+                        <li>Repetición y estadística: ejecutar múltiples corridas</li>
+                        <li>Documentar código y parámetros para reproducibilidad</li>
+                    </ol>
+                </section>
+
+                <section class="section">
+                    <h2>Resultados y Discusión</h2>
+                    <h3>Resultados principales</h3>
+                    <ul>
+                        <li>El agente RL alcanza <strong>alta precisión</strong> en control motor en simulación</li>
+                        <li>Frente a perturbaciones, el agente se readapta y recupera rendimiento en pocas decenas de episodios</li>
+                        <li>El clasificador estático no se recupera y su rendimiento cae permanentemente</li>
+                        <li>Las métricas demuestran <strong>menor caída relativa y mayor tasa de recuperación</strong> para RL versus baseline</li>
+                    </ul>
+                    
+                    <h3>Interpretación técnica</h3>
+                    <p>La capacidad de adaptación del RL proviene de actualizar la política en función de feedback continuo; esto permite que la interfaz compense la deriva y cambios fisiológicos. La co-adaptación reduce la necesidad de recalibraciones quirúrgicas o reentrenamientos manuales.</p>
+                    
+                    <h3>Discusión sobre aplicabilidad clínica</h3>
+                    <p>La tesis es <strong>prueba de concepto técnica robusta</strong>; su transferencia a entornos reales requiere: experimentos en modelos animales, validaciones in vivo, criterios de seguridad clínica y control de artefactos biológicos.</p>
+                    <p><strong>Beneficio potencial:</strong> prótesis con control estable a largo plazo, menos necesidad de intervenciones de re-calibración.</p>
+                    
+                    <h3>Limitaciones explícitas</h3>
+                    <ul>
+                        <li>Validación solo en simulación; ausencia de datos in vivo humanos o animales</li>
+                        <li>Riesgo inherente por invasividad (implantes intracorticales) no abordado experimentalmente</li>
+                        <li>Complejidad biológica real puede afectar desempeño de forma no capturada por modelos simples</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>Fundamento Científico y Rigor Metodológico</h2>
+                    <h3>Hipótesis central</h3>
+                    <p>Un BCI simbiótico implementado con aprendizaje por refuerzo puede mantener y recuperar desempeño en presencia de variabilidad neuronal. El uso de Actor-Critic permite actualizar en línea la política de control sin supervisión humana directa, lo que es coherente con la necesidad práctica de sistemas robustos para prótesis controladas por señales intracorticales.</p>
+                    
+                    <h3>Replicabilidad</h3>
+                    <p>El trabajo define explícitamente el entorno, el modelo neural sintético, el algoritmo y las métricas de evaluación. Todos los pasos son traducibles a código reproducible. Las pruebas de perturbación están descritas y permiten comparaciones cuantitativas con baselines.</p>
+                    
+                    <h3>Limitaciones honestas</h3>
+                    <p>La validación en simulación no elimina la necesidad de experimentación in vivo, pero constituye la etapa necesaria y justificada para validar el diseño algorítmico antes de implementar ensayos con animales o humanos.</p>
+                    
+                    <div class="link-container">
+                        <h4>Enlace al documento:</h4>
+                        <p><a href="https://repository.wellesley.edu/_flysystem/fedora/2023-11/WCTC_2021_LecamwasamKimaya_UsingReinforcem.pdf" target="_blank" class="document-link">Acceder al documento completo</a></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Artículo Científico -->
+        <div class="article-section">
+            <div class="article-header">
+                <h2>ARTÍCULO CIENTÍFICO</h2>
+                <h3>A Symbiotic Brain-Machine Interface through Value-Based Decision Making</h3>
+                <p class="article-subtitle">Artículo experimental que propone S-BMI con Actor-Critic usando señales de M1 y NAcc; experimentos en ratas; aprendizaje en bucle cerrado</p>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="column">
+                    <section class="section">
+                        <h2>Título y Resumen</h2>
+                        <h3>Título</h3>
+                        <p><strong>A Symbiotic Brain-Machine Interface through Value-Based Decision Making</strong></p>
+                        
+                        <h3>Resumen</h3>
+                        <p>El artículo presenta una <strong>interfaz cerebro-máquina simbiótica (S-BMI)</strong> que integra señales de corteza motora (M1) para decodificar intención y señales de núcleo accumbens (NAcc) que actúan como recompensa neural.</p>
+                        
+                        <p>Implementan un esquema <strong>Actor-Critic</strong> donde el Critic usa la actividad de NAcc para generar el error temporal de recompensa que actualiza al Actor. Experimentos en ratas implantadas con microelectrodos en M1 y NAcc, y pruebas con un brazo robótico, muestran que el sistema aprende y mantiene rendimiento en tareas de alcance hacia objetivos desconocidos, y se adapta cuando se cambia el entorno.</p>
+                        
+                        <p>Validaciones incluyen simulaciones y ensayos en bucle cerrado. <strong>Resultado clave:</strong> S-BMI logra control adaptativo y robusto aprovechando la señal de valor interna del cerebro.</p>
+                        
+                        <div class="keywords-container">
+                            <h4>Términos Clave Identificados:</h4>
+                            <ul>
+                                <li><strong>Modelado:</strong> No (no en título/abstract; si aparece en cuerpo por descripciones técnicas del simulador)</li>
+                                <li><strong>Simulación:</strong> Sí (se usan simulaciones además de ensayos reales)</li>
+                                <li><strong>Optimización:</strong> Sí (RL optimiza la política)</li>
+                                <li><strong>Sistemas blandos:</strong> No</li>
+                                <li><strong>Pensamiento sistémico:</strong> No</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2>Planteamiento del Problema y Objetivos</h2>
+                        <h3>Formulación del Problema</h3>
+                        <ul>
+                            <li><strong>Problema:</strong> diseñar un BMI que no dependa de supervisión externa para reentrenamiento y que funcione en entornos dinámicos</li>
+                            <li><strong>Enfoque:</strong> sistema de comunicación y control adaptativo entre cerebro e IA. El sistema se modela como MDP (Markov Decision Process) para aplicar RL</li>
+                            <li><strong>Objetivos:</strong> construir y demostrar un S-BMI que use señales de recompensa intracerebral (NAcc) para entrenar un agente que decodifica intención (M1→acción) y lo validar en tareas motoras reales en animales</li>
+                        </ul>
+                    </section>
+
+                    <section class="section">
+                        <h2>Marco Teórico</h2>
+                        <h3>1. Neurociencia de la recompensa y control motor</h3>
+                        <p>NAcc codifica valor y recompensa; su actividad puede usarse como señal evaluativa para aprendizaje. M1 codifica intención/plan motor.</p>
+                        
+                        <h3>2. Aprendizaje por refuerzo y Actor-Critic</h3>
+                        <p>Actor mapea estados neurales a acciones; Critic estima el valor y genera la señal de error temporal para entrenar al Actor. El uso de una señal de recompensa neuronal permite aprendizaje intrínseco sin dependencia exclusiva de recompensas externas.</p>
+                        
+                        <h3>3. S-BMI y co-adaptación</h3>
+                        <p>El sistema S-BMI plantea una auténtica simbiosis: la máquina aprende de la señal interna del cerebro, cerrando el lazo y permitiendo adaptación conjunta.</p>
+                        
+                        <p><strong>Disciplina aplicada:</strong> ingeniería biomédica, neurociencia, robótica y aprendizaje automático.</p>
+                    </section>
+                </div>
+
+                <div class="column">
+                    <section class="section">
+                        <h2>Metodología</h2>
+                        <h3>Instrumentación y preparación experimental</h3>
+                        <ul>
+                            <li><strong>Implantes:</strong> matrices microelectrodos en M1 y NAcc (varios canales, registro de spikes)</li>
+                            <li><strong>Equipo:</strong> sistema de adquisición neuronal (Tucker-Davis o similar), brazo robótico para tareas de alcance 3D</li>
+                            <li><strong>Procesamiento:</strong> spike sorting, extracción de firing rates, ventana temporal para features</li>
+                        </ul>
+                        
+                        <h3>Arquitectura computacional</h3>
+                        <ul>
+                            <li><strong>Actor:</strong> red neuronal que mapea features de M1 a comandos de actuador</li>
+                            <li><strong>Critic:</strong> red que estima la diferencia temporal de recompensa usando la actividad de NAcc; produce δₜ que actualiza el Actor</li>
+                            <li><strong>Algoritmo:</strong> Actor-Critic con actualizaciones online en bucle cerrado; parámetros de aprendizaje definidos</li>
+                        </ul>
+                        
+                        <h3>Protocolo experimental</h3>
+                        <ol>
+                            <li>Entrenamiento conductual: animales entrenados en tarea operante</li>
+                            <li>Implantación y registro: injerto de electrodos en regiones objetivo</li>
+                            <li>Sesiones en bucle cerrado: el sistema decodifica intención y mueve el robot</li>
+                            <li>Variaciones: introducir nuevos objetivos o cambios ambientales</li>
+                            <li>Medidas: tasa de éxito, tiempo al objetivo, convergencia de pesos</li>
+                        </ol>
+                    </section>
+
+                    <section class="section">
+                        <h2>Resultados y Discusión</h2>
+                        <h3>Resultados cuantitativos</h3>
+                        <ul>
+                            <li>Tras cambio de objetivo, la precisión inicial cae y luego se recupera rápidamente (hasta ~90% en decenas de ensayos)</li>
+                            <li>Curvas de recompensa muestran convergencia; pesos de redes llegan a estabilidad</li>
+                            <li>Comparaciones con sistemas sin señal de NAcc muestran menor capacidad de adaptación y recuperación</li>
+                        </ul>
+                        
+                        <h3>Interpretación</h3>
+                        <p>La señal de recompensa intracerebral acelera y dirige el aprendizaje del agente, produciendo un control robusto aun en condiciones no estacionarias. La simbiosis real (máquina que aprende del valor cerebral) permite un aprendizaje más alineado con las intenciones y prioridades internas del sujeto.</p>
+                        
+                        <h3>Ventajas prácticas</h3>
+                        <ul>
+                            <li>Reducción de la necesidad de intervención o recalibración externa</li>
+                            <li>Potencial para sistemas prostéticos o asistivos que se ajusten a objetivos subjetivos del usuario</li>
+                        </ul>
+                        
+                        <h3>Limitaciones y riesgos</h3>
+                        <ul>
+                            <li>Experimentos en ratas; extrapolación a humanos requiere pasos adicionales</li>
+                            <li>Exactitud y fiabilidad de la señal NAcc pueden variar; estimaciones erróneas degradan desempeño</li>
+                            <li>No hay discusión exhaustiva sobre impactos psicológicos/éticos de usar señales de valor intracerebral en humanos</li>
+                        </ul>
+                        
+                        <h3>Conclusión del artículo</h3>
+                        <p>S-BMI demuestra en modelo animal que la integración de señales de valor intracerebral en un esquema RL Actor-Critic constituye una arquitectura efectiva de IA simbiótica invasiva para decisiones motoras, con ventajas en adaptabilidad y control a largo plazo.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Teoría de la Información • Aprendizaje por Refuerzo • Interfaces Cerebro-Computadora • Prótesis Robóticas</p>
+        </footer>
+    </div>
+</body>
+</html>

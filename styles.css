@@ -126,7 +126,7 @@ body {
     padding: 25px 40px;
 }
 
-/* Segundo card intermedio - Teoría de Sistemas */
+/* Segundo card intermedio - Teoría de Información */
 .intermediate-card:nth-child(2) .question-card {
     background: rgba(236, 72, 153, 0.2);
     border: 1px solid rgba(236, 72, 153, 0.3);
@@ -163,7 +163,7 @@ body {
     border-radius: 2px;
 }
 
-/* Flecha del segundo card intermedio - Teoría de Sistemas */
+/* Flecha del segundo card intermedio - Teoría de Información */
 .intermediate-card:nth-child(2) .arrow-down {
     border-top: 30px solid rgba(236, 72, 153, 0.8);
 }
