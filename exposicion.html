@@ -296,8 +296,98 @@
             </div>
         </div>
 
+        <!-- Nueva Sección: Artículo sobre Offline Reinforcement Learning -->
+        <div class="content-wrapper">
+            <div class="column">
+                <section class="section">
+                    <h2>Towards Optimizing Human-Centric Objectives in AI-Assisted Decision-Making With Offline Reinforcement Learning</h2>
+                    
+                    <h3>1. Resumen del artículo</h3>
+                    <p>El estudio propone el uso de <strong>aprendizaje por refuerzo offline (Offline RL)</strong> para mejorar la toma de decisiones asistida por IA, no solo en términos de precisión de decisiones, sino también en objetivos humanos como el aprendizaje y la colaboración humano-IA. Se realizaron dos experimentos con 316 y 964 participantes, quienes debían recomendar rutinas de ejercicios a perfiles ficticios, recibiendo distintos tipos de ayuda de la IA (explicaciones, recomendaciones, asistencia bajo demanda). Los resultados mostraron que las políticas optimizadas con RL aumentan la exactitud y, en algunos casos, también el aprendizaje de los participantes.</p>
+                    
+                    <h3>2. Problemas encontrados</h3>
+                    <ul>
+                        <li>La mayoría de sistemas de IA para apoyo en decisiones se enfocan únicamente en la precisión, ignorando factores humanos como la motivación, aprendizaje y confianza.</li>
+                        <li>Existe el riesgo de sobredependencia de la IA (overreliance), que puede reducir el compromiso cognitivo de las personas.</li>
+                        <li>Métodos tradicionales (como recomendaciones fijas) no logran adaptarse a diferentes perfiles cognitivos, especialmente en usuarios con baja o alta "Necesidad de Cognición (NFC)".</li>
+                    </ul>
+                    
+                    <h3>3. Objetivo general y específicos</h3>
+                    
+                    <h4>Objetivo general:</h4>
+                    <p>Optimizar la interacción humano-IA en la toma de decisiones mediante aprendizaje por refuerzo offline, considerando tanto precisión como objetivos humanos (aprendizaje y disfrute de la tarea).</p>
+                    
+                    <h4>Objetivos específicos:</h4>
+                    <ol>
+                        <li>Diseñar un sistema de apoyo a la decisión basado en RL capaz de adaptar el tipo de asistencia de IA según el usuario.</li>
+                        <li>Evaluar el impacto de las políticas de RL sobre la precisión de las decisiones.</li>
+                        <li>Medir si estas políticas mejoran el aprendizaje humano y la percepción de colaboración con la IA.</li>
+                        <li>Comparar los resultados con enfoques tradicionales (explicaciones estáticas, recomendaciones fijas, etc.).</li>
+                    </ol>
+                    
+                    <h3>4. Marco teórico</h3>
+                    <p><strong>Alan Turing (1950)</strong> planteó si las máquinas podían pensar → <strong>Miller (2021)</strong> retoma esa idea al proponer que la IA no solo recomiende, sino que muestre evidencias para estimular el razonamiento humano.</p>
+                    
+                    <p><strong>Herbert Simon y Allen Newell (1950-70)</strong> veían la IA como apoyo en la resolución de problemas complejos → <strong>Noti & Chen (2022)</strong> y <strong>Ma et al. (2020)</strong> continúan esa visión al destacar la colaboración humano-IA para tomar mejores decisiones.</p>
+                    
+                    <p><strong>Marvin Minsky (1960-80)</strong> buscaba imitar procesos cognitivos humanos → <strong>Deci & Ryan (1985)</strong> y <strong>Cacioppo & Petty (1982)</strong> amplían esta perspectiva mostrando cómo la motivación y la necesidad de cognición determinan cómo las personas usan la IA.</p>
+                    
+                    <p>En conjunto, la disciplina actual de IA centrada en el humano es una evolución directa de los principios fundacionales de la IA: de máquinas que imitan la mente a sistemas que optimizan la interacción humano-IA para mejorar precisión, aprendizaje y motivación.</p>
+                    
+                    <h3>5. Metodología</h3>
+                    <ul>
+                        <li><strong>Diseño:</strong> Experimentos controlados online con dos muestras (N=316 y N=964).</li>
+                        <li><strong>Tarea:</strong> Recomendación de ejercicios a perfiles ficticios con distintos objetivos (perder peso, flexibilidad, etc.).</li>
+                        <li><strong>Condiciones de IA:</strong>
+                            <ul>
+                                <li>Sin IA</li>
+                                <li>Recomendación + explicación</li>
+                                <li>Explicación sola</li>
+                                <li>Asistencia bajo demanda</li>
+                            </ul>
+                        </li>
+                        <li><strong>Datos:</strong> Se recogieron decisiones de los participantes y se entrenaron políticas de RL con esos datos.</li>
+                        <li><strong>Evaluación:</strong> Comparación de políticas optimizadas vs. enfoques tradicionales en términos de:
+                            <ul>
+                                <li>Precisión en la decisión</li>
+                                <li>Aprendizaje (tests posteriores)</li>
+                                <li>Disfrute y confianza reportados</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3>6. Resultados</h3>
+                    
+                    <h4>Objetivo general</h4>
+                    <p>Optimizar la interacción humano-IA en la toma de decisiones mediante aprendizaje por refuerzo offline, considerando tanto precisión como objetivos humanos (aprendizaje y disfrute).</p>
+                    <p><strong>✅ Resultado:</strong> Sí se logró en parte. El RL offline mejoró la precisión y generó políticas más adaptativas. Sin embargo, optimizar el aprendizaje humano fue más difícil: se logró solo en ciertos grupos (los de baja NFC).</p>
+                    
+                    <h4>📌 Objetivo específico 1:</h4>
+                    <p>Diseñar un sistema de apoyo a la decisión basado en RL capaz de adaptar el tipo de asistencia de IA según el usuario.</p>
+                    <p><strong>✅ Resultado:</strong> Se desarrolló un sistema con 4 tipos de ayuda (sin IA, recomendación+explicación, solo explicación, bajo demanda) y RL eligió la mejor según contexto y perfil cognitivo.</p>
+                    
+                    <h4>📌 Objetivo específico 2:</h4>
+                    <p>Evaluar el impacto de las políticas de RL sobre la precisión de las decisiones.</p>
+                    <p><strong>✅ Resultado:</strong> Las políticas optimizadas con RL superaron significativamente a los métodos tradicionales (ej. recomendaciones fijas) en exactitud.</p>
+                    
+                    <h4>📌 Objetivo específico 3:</h4>
+                    <p>Medir si estas políticas mejoran el aprendizaje humano.</p>
+                    <p><strong>⚠️ Resultado parcial:</strong> El aprendizaje mejoró en personas con baja necesidad de cognición (NFC), pero no en las de alta NFC. Es más complejo optimizar aprendizaje que precisión.</p>
+                    
+                    <h4>📌 Objetivo específico 4:</h4>
+                    <p>Comparar los resultados con enfoques tradicionales.</p>
+                    <p><strong>✅ Resultado:</strong> El RL fue mejor que los métodos clásicos en precisión. En aprendizaje, el RL solo superó en algunos casos, mostrando que aún hay limitaciones.</p>
+                    
+                    <h3>7. Implicaciones para la Simbiosis Humano-IA</h3>
+                    <p>Este estudio refuerza la importancia de considerar <strong>objetivos humanos</strong> más allá de la precisión algorítmica. El aprendizaje por refuerzo offline demuestra que es posible optimizar tanto la eficiencia como el desarrollo cognitivo humano, aunque con limitaciones según el perfil cognitivo del usuario.</p>
+                    
+                    <p>La investigación conecta directamente con los principios de <strong>delegación bidireccional</strong> y <strong>recalibración de agencia</strong> discutidos en el marco teórico principal, mostrando cómo la IA puede adaptarse dinámicamente a las necesidades humanas específicas, creando una verdadera simbiosis cognitiva.</p>
+                </section>
+            </div>
+        </div>
+
         <footer class="footer">
-            <p>Estudio de caso: Municipio Sueco | Metodología Gioia | Análisis Cualitativo</p>
+            <p>Estudio de caso: Municipio Sueco | Metodología Gioia | Análisis Cualitativo | Offline RL Research</p>
         </footer>
     </div>
 </body>
