@@ -371,6 +371,31 @@
                     <p>Evaluar el impacto de las políticas de RL sobre la precisión de las decisiones.</p>
                     <p><strong>✅ Resultado:</strong> Las políticas optimizadas con RL superaron significativamente a los métodos tradicionales (ej. recomendaciones fijas) en exactitud.</p>
                     
+                    <h5>🔹 ¿Qué son "políticas" en RL?</h5>
+                    <p>Una política (policy) en RL es la estrategia que sigue el agente para decidir qué acción tomar en cada situación.</p>
+                    <p>En este artículo, la "acción" es qué tipo de ayuda ofrecer al usuario durante la tarea de toma de decisiones.</p>
+                    
+                    <p><strong>Ejemplos de acciones que forman parte de la política:</strong></p>
+                    <ul>
+                        <li>Dar una recomendación con explicación.</li>
+                        <li>Dar solo una explicación.</li>
+                        <li>Dar ayuda bajo demanda.</li>
+                        <li>Dar ninguna ayuda.</li>
+                    </ul>
+                    
+                    <p>La política aprendida le dice al sistema en qué momento y a qué tipo de usuario conviene aplicar cada forma de ayuda.</p>
+                    
+                    <h5>🔹 ¿Qué se hizo en el experimento?</h5>
+                    <ol>
+                        <li>Primero recolectaron datos de decisiones humanas bajo distintos tipos de ayuda.</li>
+                        <li>Con esos datos, entrenaron un modelo de RL offline, que buscó la política óptima: es decir, la combinación de ayudas que maximizaba la precisión de las decisiones.</li>
+                        <li>Luego probaron esa política optimizada con nuevos participantes para ver si funcionaba mejor que los métodos tradicionales (ejemplo: siempre dar explicación fija).</li>
+                    </ol>
+                    
+                    <h5>🔹 ¿Cómo se logró el resultado?</h5>
+                    <p><strong>Resultado obtenido:</strong> las políticas optimizadas con RL lograron mayor precisión en la toma de decisiones que las políticas tradicionales (ejemplo: siempre dar recomendación o siempre dar explicación).</p>
+                    <p>Es decir, la IA aprendió que no hay una sola forma universal de ayudar, sino que la mejor estrategia es adaptar el tipo de ayuda a cada contexto y perfil cognitivo del usuario.</p>
+                    
                     <h4>📌 Objetivo específico 3:</h4>
                     <p>Medir si estas políticas mejoran el aprendizaje humano.</p>
                     <p><strong>⚠️ Resultado parcial:</strong> El aprendizaje mejoró en personas con baja necesidad de cognición (NFC), pero no en las de alta NFC. Es más complejo optimizar aprendizaje que precisión.</p>
